@@ -6,84 +6,103 @@ public class HlavniProgram {
 
     public void main(String[] args) {
         Turtle zofka;
-
         zofka = new Turtle();
 
-        nakresliPrasatko(zofka);
+        double kratsiStrana = 60;
+        double delsiStrana = 90;
 
-        zofka.setLocation(30, 400);
+        zofka.setLocation(120, 140);
+        for (int i = 0; i < 4; i++) {
+            nakresliDomecek(zofka, kratsiStrana, delsiStrana);
+            zofka.turnRight(90);
+            zofka.penUp();
+            zofka.move(180);
+            zofka.turnLeft(90);
+            zofka.penDown();
+        }
+        nakresliDomecek(zofka, kratsiStrana, delsiStrana);
 
-        nakresliOsmiuhelnik(zofka);
+        zofka.setLocation(120, 300);
+        nakresliDomecek(zofka, kratsiStrana, delsiStrana);
+        zofka.setLocation(600, 300);
+        nakresliDomecek(zofka, kratsiStrana, delsiStrana);
 
-        zofka.setLocation(210, 370);
 
-        nakresliKruh(zofka);
+        zofka.setLocation(300, 300);
+        nakresliPrasatko(zofka, kratsiStrana, delsiStrana, 30);
 
-        zofka.setLocation(210, 150);
 
-        nakresliSlunce(zofka);
+        zofka.setLocation(130  , 50);
+        nakresliSlunce(zofka, 20, 3);
 
+        // Úkol01 - Část 2:
+//        nakresliPrasatko(zofka, 90, 120, 40);
+//
+//        zofka.setLocation(30, 400);
+//        nakresliOsmiuhelnik(zofka, 60);
+//
+//        zofka.setLocation(210, 370);
+//        nakresliKruh(zofka, 10);
+//
+//        zofka.setLocation(210, 150);
+//        nakresliSlunce(zofka, 40, 10);
 
     }
 
-    private void nakresliSlunce(Turtle zofka) {
+    private void nakresliDomecek(Turtle zofka, double kratsiStrana, double delsiStrana) {
+        zofka.turnRight(90);
+        nakresliTeloPrasatka(zofka, kratsiStrana, delsiStrana);
+        zofka.turnRight(60);
+    }
+
+    private void nakresliSlunce(Turtle zofka, int delkaPaprsku, int velikostKruhu ) {
         for (int i = 0; i < 12; i++) {
-            nakresliPaprsek(zofka);
+            nakresliPaprsek(zofka, delkaPaprsku);
             for (int j = 0; j < 4; j++) {
-                zofka.move(10);
+                zofka.move(velikostKruhu);
                 zofka.turnRight(7.5);
             }
         }
     }
 
-    private void nakresliPaprsek(Turtle zofka) {
+    private void nakresliPaprsek(Turtle zofka, int delkaPaprsku) {
         zofka.turnLeft(90);
-        zofka.move(40);
+        zofka.move(delkaPaprsku);
         zofka.turnRight(180);
         zofka.penUp();
-        zofka.move(40);
+        zofka.move(delkaPaprsku);
         zofka.turnLeft(90);
         zofka.penDown();
     }
 
-    private void nakresliKruh(Turtle zofka) {
+    private void nakresliKruh(Turtle zofka, int velikostKruhu) {
         for (int i = 0; i < 48; i++) {
-            zofka.move(10);
+            zofka.move(velikostKruhu);
             zofka.turnRight(7.5);
         }
     }
 
-    private void nakresliOsmiuhelnik(Turtle zofka) {
+    private void nakresliOsmiuhelnik(Turtle zofka, double delkaStrany) {
         for (int i = 0; i < 8; i++) {
-            zofka.move(60);
+            zofka.move(delkaStrany);
             zofka.turnRight(45);
         }
     }
 
-    private void nakresliPrasatko(Turtle zofka) {
+    private void nakresliPrasatko(Turtle zofka, double kratsiStrana, double delsiStrana, double delkaNohy) {
         // tělo
-        for (int i = 0; i < 2; i++) {
-            zofka.turnRight(90);
-            zofka.move(120);
-            zofka.turnRight(90);
-            zofka.move(90);
-        }
-        for (int i = 0; i < 2; i++) {
-            zofka.turnLeft(120);
-            zofka.move(90);
-        }
-            zofka.turnRight(90);
+        nakresliTeloPrasatka(zofka,kratsiStrana, delsiStrana);
         // nohy
-        nakresliNohu(zofka);
+        nakresliNohu(zofka, delkaNohy);
         zofka.turnRight(90);
         zofka.penUp();
-        zofka.move(120);
+        zofka.move(delsiStrana);
         zofka.turnRight(120);
         zofka.penDown();
-        nakresliNohu(zofka);
+        nakresliNohu(zofka, delkaNohy);
         // ocasek
         zofka.penUp();
-        zofka.move(90);
+        zofka.move(kratsiStrana);
         zofka.turnRight(150);
         zofka.penDown();
         nakresliVlnkuOcasku(zofka);
@@ -95,6 +114,20 @@ public class HlavniProgram {
         zofka.turnRight(30);
     }
 
+    private void nakresliTeloPrasatka(Turtle zofka, double kratsiStrana, double delsiStrana) {
+        for (int i = 0; i < 2; i++) {
+            zofka.turnRight(90);
+            zofka.move(delsiStrana);
+            zofka.turnRight(90);
+            zofka.move(kratsiStrana);
+        }
+        for (int i = 0; i < 2; i++) {
+            zofka.turnLeft(120);
+            zofka.move(kratsiStrana);
+        }
+        zofka.turnRight(90);
+    }
+
     private void nakresliVlnkuOcasku(Turtle zofka) {
         for (int i = 0; i < 20; i++) {
             zofka.move(3);
@@ -102,14 +135,14 @@ public class HlavniProgram {
         }
     }
 
-    private void nakresliNohu(Turtle zofka) {
-        zofka.move(40);
+    private void nakresliNohu(Turtle zofka, double delkaNohy) {
+        zofka.move(delkaNohy);
         zofka.turnLeft(120);
         zofka.penUp();
-        zofka.move(40);
+        zofka.move(delkaNohy);
         zofka.turnLeft(120);
         zofka.penDown();
-        zofka.move(40);
+        zofka.move(delkaNohy);
         zofka.turnRight(30);
     }
 
