@@ -11,7 +11,53 @@ public class HlavniProgram {
 
         nakresliPrasatko(zofka);
 
+        zofka.setLocation(30, 400);
 
+        nakresliOsmiuhelnik(zofka);
+
+        zofka.setLocation(210, 370);
+
+        nakresliKruh(zofka);
+
+        zofka.setLocation(210, 150);
+
+        nakresliSlunce(zofka);
+
+
+    }
+
+    private void nakresliSlunce(Turtle zofka) {
+        for (int i = 0; i < 12; i++) {
+            nakresliPaprsek(zofka);
+            for (int j = 0; j < 4; j++) {
+                zofka.move(10);
+                zofka.turnRight(7.5);
+            }
+        }
+    }
+
+    private void nakresliPaprsek(Turtle zofka) {
+        zofka.turnLeft(90);
+        zofka.move(40);
+        zofka.turnRight(180);
+        zofka.penUp();
+        zofka.move(40);
+        zofka.turnLeft(90);
+        zofka.penDown();
+    }
+
+    private void nakresliKruh(Turtle zofka) {
+        for (int i = 0; i < 48; i++) {
+            zofka.move(10);
+            zofka.turnRight(7.5);
+        }
+    }
+
+    private void nakresliOsmiuhelnik(Turtle zofka) {
+        for (int i = 0; i < 8; i++) {
+            zofka.move(60);
+            zofka.turnRight(45);
+        }
     }
 
     private void nakresliPrasatko(Turtle zofka) {
