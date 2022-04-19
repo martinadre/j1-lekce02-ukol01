@@ -149,7 +149,7 @@ public class HlavniProgram {
 
     private void nakresliDomecek(Turtle zofka, double kratsiStrana, double delsiStrana) {
         zofka.turnRight(90);
-        nakresliTeloPrasatka(zofka, kratsiStrana, delsiStrana);
+        nakresliObdelnikSTrojuhelnikem(zofka, kratsiStrana, delsiStrana);
         zofka.turnRight(60);
     }
 
@@ -189,7 +189,7 @@ public class HlavniProgram {
 
     private void nakresliPrasatko(Turtle zofka, double kratsiStrana, double delsiStrana, double delkaNohy) {
         // tělo
-        nakresliTeloPrasatka(zofka,kratsiStrana, delsiStrana);
+        nakresliObdelnikSTrojuhelnikem(zofka,kratsiStrana, delsiStrana);
         // nohy
         nakresliNohu(zofka, delkaNohy);
         zofka.turnRight(90);
@@ -212,7 +212,7 @@ public class HlavniProgram {
         zofka.turnRight(30);
     }
 
-    private void nakresliTeloPrasatka(Turtle zofka, double kratsiStrana, double delsiStrana) {
+    private void nakresliObdelnikSTrojuhelnikem(Turtle zofka, double kratsiStrana, double delsiStrana) {
         for (int i = 0; i < 2; i++) {
             zofka.turnRight(90);
             zofka.move(delsiStrana);
